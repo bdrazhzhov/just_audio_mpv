@@ -80,6 +80,9 @@ class JustAudioMPVPlayer extends AudioPlayerPlatform {
       _setState(_State.ready);
       update();
     });
+    mpv.on(MPVEvents.stopped, null, (ev, _) async {
+      _setState(_State.completed);
+    });
     mpv.on(MPVEvents.seek, null, (ev, _) async {
       _setState(_State.ready);
       update();
